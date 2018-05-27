@@ -7,12 +7,12 @@ from src import app
 
 auth = Blueprint('auth', __name__, url_prefix='/user')
 
-
+'''
 @auth.route('/', methods=['GET','POST'])
 @basic_auth.login_required
 def test():
     return "test"
-
+'''
 
 @auth.route('/token', methods = ['POST'])
 @basic_auth.login_required

@@ -7,10 +7,6 @@ index_properties = {
         "type": "text",
         "constraint" : "notNull"
     },
-    "modified_time": {
-        "type": "date",
-        "constraint": "notNull"
-    },
     "name": {
             "first": {
                 "type": "text",
@@ -27,7 +23,3 @@ index_properties = {
     }
 }
 
-for k in index_properties:
-    print index_properties[k], type(index_properties[k])
-    if len(index_properties[k])>1:
-        print 1

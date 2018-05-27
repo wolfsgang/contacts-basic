@@ -21,8 +21,6 @@ def create_app(config_obj):
 def load_config(app, config_obj):
     app.config.from_object(__name__)
     app.config.from_object(config_obj)
-    # src.config.from_object('default_settings')
-    # src.config.from_envvar('SKELETON_SETTINGS', silent=True)
 
 
 def initialize_app(app):
@@ -30,7 +28,7 @@ def initialize_app(app):
     app.static_folder = app.config['STATIC_DIR']
 
     @app.teardown_appcontext
-    def remove_session(response):  # pylint: disable=W0612
+    def remove_session(response):
         db.session.remove()
         return response
 

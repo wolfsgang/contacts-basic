@@ -5,12 +5,9 @@ from sqlalchemy.engine.url import URL
 
 
 class Config(object):
-    # controls whether web interfance users are in Flask debug mode
-    # (e.g. Werkzeug stack trace console, unminified assets)
     DEBUG = False
 
     # Encryption key used to sign Flask session cookies
-    # Generate a random one using os.urandom(24)
     if os.environ.get('APP_KEY') is not None:
         SECRET_KEY = os.environ.get('APP_KEY')
     else:
@@ -33,8 +30,8 @@ class Config(object):
     DB_NAME = 'postgres'
     DB_PASS = 'dev-instance'
     DB_PORT = '5432'
-    #DB_SCHEMA = 'skeleton_schema'
-    #DB_ADMIN = 'skeleton_dba'
+    #DB_SCHEMA = ''
+    #DB_ADMIN = ''
     DB_USER = 'postgres'
     SQLALCHEMY_DATABASE_URI = DATABASE_URI_FMT.format(**
                                                       {'username': DB_USER,
