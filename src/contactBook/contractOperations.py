@@ -53,6 +53,7 @@ class ContractOperations:
         """edit by email id key"""
 
         edit_doc = {}
+        info = ""
         if email_key is None:
             return "Email id is needed as a unique identifier for edit"
         edit_doc_id = hashlib.sha1(email_key).hexdigest()
@@ -69,9 +70,13 @@ class ContractOperations:
             if key in req_data:
                 edit_doc[key] = req_data[key]
 
+        if "email" in req_data:
+            info = "email cannot be updated, rest fields will be"
+            edit_doc["email"] = email_key
+
         edit_doc["modified_time"] = int(round(time() * 1000))
         res = es.index(index=curr_index, doc_type=curr_doc_type, id=edit_doc_id, body=edit_doc)
-        return res['result']
+        return res['result'], info
 
     def c_delete(self, email_key):
         """delete by email id"""
